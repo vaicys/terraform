@@ -83,3 +83,33 @@ variable "gcp_oauth_client_secret" {
   type        = string
   sensitive   = true
 }
+
+# Oracle Cloud Infrastructure
+
+variable "oci_tenancy_ocid" {
+  description = "OCI Root Tenancy OCID"
+  type        = string
+  sensitive   = true
+}
+
+variable "oci_billing_currency_code" {
+  description = "ISO 4217 3-letter currency code matching the OCI Tenancy rate card"
+  type        = string
+  sensitive   = true
+}
+
+variable "oci_region" {
+  description = "OCI home region"
+  type        = string
+  default     = "eu-zurich-1"
+}
+
+variable "oci_budget_alert_emails" {
+  description = "List of email addresses to receive OCI budget alerts"
+  type        = list(string)
+}
+
+variable "oci_ssh_public_key" {
+  description = "SSH public key for OCI compute instances"
+  type        = string
+}

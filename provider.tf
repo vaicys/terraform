@@ -14,6 +14,10 @@ terraform {
       source  = "hashicorp/google"
       version = "~> 8.10.0"
     }
+    oci = {
+      source  = "oracle/oci"
+      version = "~> 9.14.0"
+    }
   }
 }
 
@@ -29,5 +33,10 @@ provider "google" {
   user_project_override = true
   region                = var.gcp_region
   zone                  = var.gcp_zone
+}
+
+provider "oci" {
+  config_file_profile = "DEFAULT"
+  region              = var.oci_region
 }
 

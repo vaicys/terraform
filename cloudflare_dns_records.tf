@@ -87,3 +87,25 @@ resource "cloudflare_dns_record" "mikrotik_routers" {
   ttl     = local.dns_ttl
   proxied = false
 }
+
+# Oracle Cloud VM
+
+resource "cloudflare_dns_record" "oracle_ipv4" {
+  zone_id = var.cloudflare_vaicys_com_zone_id
+  name    = "oracle.vaicys.com"
+  content = local.oracle_ipv4
+  comment = "Oracle Cloud VM"
+  type    = "A"
+  ttl     = local.dns_ttl
+  proxied = false
+}
+
+resource "cloudflare_dns_record" "oracle_ipv6" {
+  zone_id = var.cloudflare_vaicys_com_zone_id
+  name    = "oracle.vaicys.com"
+  content = local.oracle_ipv6
+  comment = "Oracle Cloud VM"
+  type    = "AAAA"
+  ttl     = local.dns_ttl
+  proxied = false
+}

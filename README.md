@@ -4,6 +4,7 @@ Terraform configuration for personal cloud infrastructure:
 
 - Cloudflare
 - Google Cloud
+- Oracle Cloud
 
 # Usage
 
