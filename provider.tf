@@ -25,9 +25,8 @@ provider "cloudflare" {
   api_token = var.cloudflare_api_token
 }
 
-# Required for `user_project_override = true` (needed by Cloud Billing Budgets API):
-#   gcloud services enable cloudresourcemanager.googleapis.com --project=<gcp_project_id>
 provider "google" {
+  credentials           = var.gcp_credentials
   project               = var.gcp_project_id
   billing_project       = var.gcp_project_id
   user_project_override = true
@@ -36,7 +35,10 @@ provider "google" {
 }
 
 provider "oci" {
-  config_file_profile = "DEFAULT"
-  region              = var.oci_region
+  tenancy_ocid = var.oci_tenancy_ocid
+  user_ocid    = var.oci_user_ocid
+  fingerprint  = var.oci_fingerprint
+  private_key  = var.oci_private_key
+  region       = var.oci_region
 }
 

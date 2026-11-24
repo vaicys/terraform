@@ -43,6 +43,12 @@ variable "cloudflare_tunnel_applications" {
 
 # Google Cloud Platform
 
+variable "gcp_credentials" {
+  description = "Google Cloud Service Account credentials JSON"
+  type        = string
+  sensitive   = true
+}
+
 variable "gcp_project_id" {
   description = "Google Cloud Project ID"
   type        = string
@@ -88,6 +94,24 @@ variable "gcp_oauth_client_secret" {
 
 variable "oci_tenancy_ocid" {
   description = "OCI Root Tenancy OCID"
+  type        = string
+  sensitive   = true
+}
+
+variable "oci_user_ocid" {
+  description = "OCI User OCID"
+  type        = string
+  sensitive   = true
+}
+
+variable "oci_fingerprint" {
+  description = "OCI API Key Fingerprint"
+  type        = string
+  sensitive   = true
+}
+
+variable "oci_private_key" {
+  description = "OCI API RSA Private Key (PEM)"
   type        = string
   sensitive   = true
 }

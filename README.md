@@ -8,8 +8,6 @@ Terraform configuration for personal cloud infrastructure:
 
 # Usage
 
-For GCP usage, authenticate with `gcloud auth application-default login`.
-
 ```sh
 terraform init                 # initialize backend and providers
 terraform plan                 # preview changes
