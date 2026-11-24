@@ -49,6 +49,18 @@ variable "gcp_project_id" {
   sensitive   = true
 }
 
+variable "gcp_billing_account_id" {
+  description = "Google Cloud Billing Account ID"
+  type        = string
+  sensitive   = true
+}
+
+variable "gcp_billing_currency_code" {
+  description = "ISO 4217 3-letter currency code matching the GCP Billing Account"
+  type        = string
+  sensitive   = true
+}
+
 variable "gcp_region" {
   description = "GCP region"
   type        = string
