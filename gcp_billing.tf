@@ -1,16 +1,30 @@
 # APIs
 
+resource "google_project_service" "cloudbilling" {
+  project            = var.gcp_project_id
+  service            = "cloudbilling.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_project_service" "billingbudgets" {
   project            = var.gcp_project_id
   service            = "billingbudgets.googleapis.com"
   disable_on_destroy = false
 }
 
-# Billing Budget & Alert
+# Billing Account & Budget
+
+data "google_billing_account" "main" {
+  billing_account = var.gcp_billing_account_id
+
+  depends_on = [
+    google_project_service.cloudbilling,
+  ]
+}
 
 resource "google_billing_budget" "monthly_spend_alert" {
   billing_account = var.gcp_billing_account_id
-  display_name    = "Monthly 1 ${var.gcp_billing_currency_code} Spend Alert"
+  display_name    = "Monthly 1 ${data.google_billing_account.main.currency_code} Spend Alert"
 
   budget_filter {
     calendar_period = "MONTH"
@@ -21,7 +35,7 @@ resource "google_billing_budget" "monthly_spend_alert" {
   amount {
     specified_amount {
       # Must match the billing account currency
-      currency_code = var.gcp_billing_currency_code
+      currency_code = data.google_billing_account.main.currency_code
       units         = "1"
     }
   }

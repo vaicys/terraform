@@ -61,12 +61,6 @@ variable "gcp_billing_account_id" {
   sensitive   = true
 }
 
-variable "gcp_billing_currency_code" {
-  description = "ISO 4217 3-letter currency code matching the GCP Billing Account"
-  type        = string
-  sensitive   = true
-}
-
 variable "gcp_region" {
   description = "GCP region"
   type        = string
@@ -112,12 +106,6 @@ variable "oci_fingerprint" {
 
 variable "oci_private_key" {
   description = "OCI API RSA Private Key (PEM)"
-  type        = string
-  sensitive   = true
-}
-
-variable "oci_billing_currency_code" {
-  description = "ISO 4217 3-letter currency code matching the OCI Tenancy rate card"
   type        = string
   sensitive   = true
 }
